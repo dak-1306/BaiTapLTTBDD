@@ -22,18 +22,19 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CircleAvatar(
-                radius: 100,
+                radius: 75,
                 backgroundImage: AssetImage('assets/test.png'),
               ),
               SizedBox(height: 20),
               Text(
-                'Nguyen Van A',
+                'Tran Hai Dang',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 10),
-              Text('Lop: 19TCLC_DT1', style: TextStyle(fontSize: 18)),
+              Text('Lop: CN2302CLCA', style: TextStyle(fontSize: 18)),
             ],
           ),
         ),
