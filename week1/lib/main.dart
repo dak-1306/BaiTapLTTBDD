@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// Bài tập 1:
+// Tạo 1 màn hình đơn giản hiển thị ảnh đại diện, tên và lớp học của bạn
 void main() {
   runApp(MyApp());
 }
@@ -8,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'My Flutter App',
       home: Scaffold(
         appBar: AppBar(
