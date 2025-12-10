@@ -4,7 +4,7 @@ void main() {
   runApp(const MyApp());
 }
 
-int input = 0;
+dynamic input;
 bool isList = false;
 
 class MyApp extends StatelessWidget {
@@ -45,7 +45,9 @@ class _HomePageState extends State<HomePage> {
                   width: 250,
                   child: TextField(
                     onChanged: (value) {
-                      input = int.tryParse(value) ?? 0;
+                      int.tryParse(value) is int
+                          ? input = int.parse(value)
+                          : input = value;
                     },
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -57,7 +59,10 @@ class _HomePageState extends State<HomePage> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      input != 0 ? isList = true : isList = false;
+                      input != null ? isList = true : isList = false;
+                      print(
+                        input is int ? 'Là số nguyên' : 'Không phải số nguyên',
+                      );
                     });
                   },
                   style: ElevatedButton.styleFrom(
@@ -69,7 +74,13 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             SizedBox(height: 20),
-            isList == true
+            isList == true && (input is! int || input <= 0)
+                ? Text(
+                    'Vui lòng nhập số nguyên dương',
+                    style: TextStyle(color: Colors.red),
+                  )
+                : SizedBox(),
+            isList == true && (input is int && input > 0)
                 ? SizedBox(
                     height: 300,
                     width: 300,
