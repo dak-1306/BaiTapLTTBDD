@@ -1,16 +1,11 @@
-# exercise3
+# Bài thực hành số 3
 
-A new Flutter project.
+Nội dung:
+Sinh viên xây dựng một màn hình đơn giản cho phép người dùng nhập hai số, chọn phép toán và hiển thị kết quả ngay lập tức.
 
-## Getting Started
+Bài tập giúp sinh viên luyện kỹ năng:
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Xử lý dữ liệu nhập từ TextField
+2. Quản lý trạng thái (state)
+3. Tương tác UI: chọn phép toán
+4. Tính toán và hiển thị kết quả
