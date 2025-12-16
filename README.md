@@ -14,3 +14,13 @@ Mỗi bài sẽ nằm trong 1 thư mục riêng của tuần đó
 #### Bài thực hành 2
 
 - Thư mục: /week2/exercise2
+
+#### Bài thực hành 3
+
+- Thư mục: /week2/exercise3
+
+### Tuần 3
+
+#### Bài thực hành 2
+
+- Thư mục: /week3/exercise2
