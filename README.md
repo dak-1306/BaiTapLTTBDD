@@ -24,3 +24,15 @@ Mỗi bài sẽ nằm trong 1 thư mục riêng của tuần đó
 #### Bài thực hành 2
 
 - Thư mục: /week3/exercise2
+
+#### Bài tập về nhà tìm hiểu về nullable
+
+- Thư mục: /wee3/nullable
+
+#### Bài tập về nhà chọn hình thức thanh toán
+
+- Thư mục: /week3/payment
+
+#### Bài tập về nhà Hệ thống quản lý thư viện
+
+- Thư mục: /week/library_manage
