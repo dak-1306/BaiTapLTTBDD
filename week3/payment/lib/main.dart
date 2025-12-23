@@ -4,16 +4,39 @@ void main() {
   runApp(const MyApp());
 }
 
-class PaymentMethod {
+abstract class PaymentMethod {
   final int id;
   final String name;
   final String assetPath;
 
-  PaymentMethod({
-    required this.id,
-    required this.name,
-    required this.assetPath,
-  });
+  const PaymentMethod(this.id, this.name, this.assetPath);
+
+  // Phương thức trừu tượng để thể hiện đa hình
+  Widget icon({double? width, double? height});
+}
+
+class GooglePay extends PaymentMethod {
+  const GooglePay() : super(1, 'Google Pay', 'assets/google-pay.png');
+
+  @override
+  Widget icon({double? width, double? height}) =>
+      Image.asset(assetPath, width: width, height: height);
+}
+
+class ApplePay extends PaymentMethod {
+  const ApplePay() : super(2, 'Apple Pay', 'assets/apple-pay.png');
+
+  @override
+  Widget icon({double? width, double? height}) =>
+      Image.asset(assetPath, width: width, height: height);
+}
+
+class PayPal extends PaymentMethod {
+  const PayPal() : super(3, 'PayPal', 'assets/paypal.png');
+
+  @override
+  Widget icon({double? width, double? height}) =>
+      Image.asset(assetPath, width: width, height: height);
 }
 
 class MyApp extends StatefulWidget {
@@ -26,16 +49,12 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   int? _selectedId;
 
-  List<PaymentMethod> paymentMethods = [
-    PaymentMethod(
-      id: 1,
-      name: 'Google Pay',
-      assetPath: 'assets/google-pay.png',
-    ),
-    PaymentMethod(id: 2, name: 'Apple Pay', assetPath: 'assets/apple-pay.png'),
-    PaymentMethod(id: 3, name: 'PayPal', assetPath: 'assets/paypal.png'),
+  final List<PaymentMethod> paymentMethods = const [
+    GooglePay(),
+    ApplePay(),
+    PayPal(),
   ];
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -45,7 +64,6 @@ class _MyAppState extends State<MyApp> {
         body: Center(
           child: SizedBox(
             width: 300,
-
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -53,12 +71,14 @@ class _MyAppState extends State<MyApp> {
                   width: 100,
                   height: 100,
                   child: _selectedId != null
-                      ? Image.asset(
-                          paymentMethods
-                              .firstWhere((method) => method.id == _selectedId)
-                              .assetPath,
-                        )
-                      : Image.asset('assets/wallet.png'),
+                      ? paymentMethods
+                            .firstWhere((m) => m.id == _selectedId)
+                            .icon(width: 100, height: 100)
+                      : Image.asset(
+                          'assets/wallet.png',
+                          width: 100,
+                          height: 100,
+                        ),
                 ),
                 const SizedBox(height: 20),
                 Column(
@@ -66,7 +86,7 @@ class _MyAppState extends State<MyApp> {
                     for (var method in paymentMethods)
                       Padding(
                         padding: const EdgeInsets.only(bottom: 15.0),
-                        child: PaymentMethodContainer(method),
+                        child: paymentMethodContainer(method),
                       ),
                   ],
                 ),
@@ -78,21 +98,20 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  Material PaymentMethodContainer(PaymentMethod method) {
+  Material paymentMethodContainer(PaymentMethod method) {
     return Material(
       shadowColor: Colors.blue.shade200,
       borderRadius: BorderRadius.circular(15),
       elevation: 5,
       child: InkWell(
         onTap: () {
-          // Handle tap event
           setState(() {
             _selectedId = method.id;
           });
         },
         borderRadius: BorderRadius.circular(15),
         child: Container(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -109,17 +128,24 @@ class _MyAppState extends State<MyApp> {
                   ),
                 ),
                 child: _selectedId == method.id
-                    ? Icon(Icons.circle_rounded, size: 16, color: Colors.blue)
+                    ? const Icon(
+                        Icons.circle_rounded,
+                        size: 16,
+                        color: Colors.blue,
+                      )
                     : null,
               ),
               Text(
                 method.name,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
               SizedBox(
                 width: 45,
                 height: 45,
-                child: Image.asset(method.assetPath),
+                child: method.icon(width: 45, height: 45),
               ),
             ],
           ),

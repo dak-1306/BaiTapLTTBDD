@@ -74,8 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
         );
         widget.onUpdateBook?.call(updated);
       }
-      if (!_currentUser!.borrowedBookIds.contains(id))
-        _currentUser!.borrowedBookIds.add(id);
+      _currentUser!.addBorrowedBook(id);
     }
     setState(() => _selectedBookIds.clear());
     widget.onUserSelected?.call(_currentUser!);

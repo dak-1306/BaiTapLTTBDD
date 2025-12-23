@@ -1,6 +1,9 @@
 import '../models/book_model.dart';
+import '../models/magazine_model.dart';
+import '../models/library_item.dart';
 
-final List<Book> sampleBooks = [
+// Sử dụng LibraryItem để demo Polymorphism (Đa hình)
+final List<LibraryItem> sampleItems = [
   Book(
     id: 'b1',
     title: 'Lập trình Dart',
@@ -16,6 +19,14 @@ final List<Book> sampleBooks = [
     borrowedId: 'user123',
     publicationYear: 2021,
   ),
+  Magazine(
+    id: 'm1',
+    title: 'Công nghệ số',
+    author: 'Ban biên tập',
+    publicationYear: 2023,
+    issueNumber: 156,
+    publisher: 'NXB Trẻ',
+  ),
   Book(
     id: 'b3',
     title: 'Cấu trúc dữ liệu',
@@ -29,6 +40,14 @@ final List<Book> sampleBooks = [
     author: 'Tác giả D',
     status: BookStatus.available,
     publicationYear: 2018,
+  ),
+  Magazine(
+    id: 'm2',
+    title: 'Khoa học & Đời sống',
+    author: 'Nhiều tác giả',
+    publicationYear: 2023,
+    issueNumber: 89,
+    publisher: 'NXB Khoa học',
   ),
   Book(
     id: 'b5',
@@ -46,3 +65,6 @@ final List<Book> sampleBooks = [
     publicationYear: 2017,
   ),
 ];
+
+// Giữ lại sampleBooks cho compatibility với code hiện tại
+final List<Book> sampleBooks = sampleItems.whereType<Book>().toList();

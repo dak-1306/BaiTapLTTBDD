@@ -25,9 +25,7 @@ class BookScreen extends StatelessWidget {
                 return ListTile(
                   title: Text(book.title),
                   leading: Icon(Icons.book),
-                  subtitle: Text(
-                    'Tác giả: ${book.author} - Năm xuất bản: ${book.publicationYear}',
-                  ),
+                  subtitle: Text(book.getDisplayInfo()),
                   trailing: Icon(Icons.edit),
                 );
               }).toList(),
