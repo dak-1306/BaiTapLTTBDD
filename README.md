@@ -36,3 +36,13 @@ Mỗi bài sẽ nằm trong 1 thư mục riêng của tuần đó
 #### Bài tập về nhà Hệ thống quản lý thư viện
 
 - Thư mục: /week/library_manage
+
+### Tuần 4
+
+#### Bài tập trên lớp
+
+- Thư mục: /week4/exercise1
+
+#### Bài tập về nhà
+
+- Thư mục: /week4/ui_components_list
